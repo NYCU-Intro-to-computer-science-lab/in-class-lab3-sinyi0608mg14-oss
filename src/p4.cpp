@@ -3,6 +3,12 @@
 #include <iostream>
 using namespace std;
 
+void printIndent(int depth) {
+    if (depth <= 0) return;   
+    cout << "|--";
+    printIndent(depth - 1);   
+}
+
 int fib(int n, int depth) {
     printIndent(depth);
     cout << "SEARCH fib(" << n << ")\n";
@@ -10,8 +16,7 @@ int fib(int n, int depth) {
     int result;
     if (n == 1 || n == 2) {
         result = 1;
-    } 
-    else {
+    } else {
         int a = fib(n - 1, depth + 1); 
         int b = fib(n - 2, depth + 1); 
         result = a + b;
@@ -22,13 +27,6 @@ int fib(int n, int depth) {
 
     return result;
 }
-void printIndent(int depth) {
-    if (depth <= 0) return; 
-    cout << "|--";
-    printIndent(depth - 1);  
-}
-
-
 
 int main() {
     int n;
@@ -37,4 +35,5 @@ int main() {
     cout << ans << endl;
     return 0;
 }
+
 
